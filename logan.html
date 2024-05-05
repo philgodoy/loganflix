@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="header">
+        <a href="index.html">
+            <div class="logo">
+                CineLogan
+            </div>
+        </a>
+        <div class="navbar">
+            <li>Em Cartaz</li>
+            <li>Em Breve</li>
+            <li>Próximo a Você</li>
+            <li>Seja Premium</li>
+        </div>
+        <div class="login">
+            <p>Fazer Logan</p>
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="imagem">
+            <img src="images/images.jpg" alt="">
+        </div>
+
+        <div class="description">
+
+            <div class="title">
+                <img src="images/class-12.png" alt="">
+                <h3>Logan</h3>
+            </div>
+
+            <div class="sinopsis">
+                <p>Em 2029, Logan (Hugh Jackman) ganha a vida como chofer de limousine para cuidar do nonagenário Charles Xavier (Patrick Stewart). Debilitado fisicamente e esgotado emocionalmente, ele é procurado por Gabriela (Elizabeth Rodriguez), uma mexicana que precisa da ajuda do ex-X-Men para defender a pequena Laura Kinney / X-23 (Dafne Keen). Ao mesmo tempo em que se recusa a voltar à ativa, Logan é perseguido pelo mercenário Donald Pierce (Boyd Holbrook), interessado na menina.</p>
+            </div>
+
+            <div class="button">
+                <button onclick="displayDateArea()">Comprar Ingresso</button>
+            </div>
+
+            <div id="overlay"></div>
+
+            <div id="date-area">
+                <div class="exit-button">
+                    <button onclick="closeDateArea()"></button>
+                </div>
+                <div class="dates">
+                    <h3>Selecione uma data:</h3>
+                    <div class="options">
+                        <button onclick="displaySessions('logan13/06')">13/06</button>
+                        <button onclick="displaySessions('logan14/06')">14/06</button>
+                        <button onclick="displaySessions('logan15/06')">15/06</button>
+                        <button onclick="displaySessions('logan16/06')">16/06</button>
+                        <button onclick="displaySessions('logan17/06')">17/06</button>
+                        <button onclick="displaySessions('logan18/06')">18/06</button>
+                    </div>
+                </div>
+                <div class="sessions">
+                    <div class="date" style="display:none" id="logan13/06">
+                        <h3>Selecione uma sessão (13/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(logan.session1)">11:00</button>
+                            <button onclick="displayChoiceArea(logan.session2)">14:00</button>
+                            <button onclick="displayChoiceArea(logan.session3)">17:00</button>
+                            <button onclick="displayChoiceArea(logan.session4)">20:00</button>
+                        </div>
+                    </div>
+                    <div class="date"style="display:none" id="logan14/06">
+                        <h3>Selecione uma sessão (14/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(this)">12:00</button>
+                            <button onclick="displayChoiceArea(this)">15:00</button>
+                            <button onclick="displayChoiceArea(this)">18:00</button>
+                            <button onclick="displayChoiceArea(this)">21:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan15/06">
+                        <h3>Selecione uma sessão (15/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(this)">13:00</button>
+                            <button onclick="displayChoiceArea(this)">16:00</button>
+                            <button onclick="displayChoiceArea(this)">19:00</button>
+                            <button onclick="displayChoiceArea(this)">22:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan16/06">
+                        <h3>Selecione uma sessão (16/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(this)">11:00</button>
+                            <button onclick="displayChoiceArea(this)">14:00</button>
+                            <button onclick="displayChoiceArea(this)">17:00</button>
+                            <button onclick="displayChoiceArea(this)">20:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan17/06">
+                        <h3>Selecione uma sessão (17/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea()">12:00</button>
+                            <button onclick="displayChoiceArea()">15:00</button>
+                            <button onclick="displayChoiceArea()">18:00</button>
+                            <button onclick="displayChoiceArea()">21:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan18/06">
+                        <h3>Selecione uma sessão (18/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea()">13:00</button>
+                            <button onclick="displayChoiceArea()">16:00</button>
+                            <button onclick="displayChoiceArea()">19:00</button>
+                            <button onclick="displayChoiceArea()">22:00</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="choice-area">
+
+                <div class="exit-button">
+                    <button onclick="closeChoiceArea()"></button>
+                </div>
+
+                <div class="description">
+                    <div class="seat"></div>
+                    <p>Disponível</p>
+                    <div class="seat" id="unavailable"></div>
+                    <p>Indisponível</p>
+                </div>
+
+                <div class="price">
+                    <p>*Valor do ingresso: R$ 30,00</p>
+                </div>
+
+                <div class="session">
+                    <div class="area1">
+                        <ul>
+                            <li class = "seat" id="J1" onclick="clickSeat(this)">J1</li>
+                            <li class = "seat" id="I1" onclick="clickSeat(this)">I1</li>
+                            <li class = "seat" id="H1" onclick="clickSeat(this)">H1</li>
+                            <li class = "seat" id="G1" onclick="clickSeat(this)">G1</li>
+                            <li class = "seat" id="F1" onclick="clickSeat(this)">F1</li>
+                            <li class = "seat" id="E1" onclick="clickSeat(this)">E1</li>
+                            <li class = "seat" id="D1" onclick="clickSeat(this)">D1</li>
+                            <li class = "seat" id="C1" onclick="clickSeat(this)">C1</li>
+                            <li class = "seat" id="B1" onclick="clickSeat(this)">B1</li>
+                            <li class = "seat" id="A1" onclick="clickSeat(this)">A1</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J2" onclick="clickSeat(this)">J2</li>
+                            <li class = "seat" id="I2" onclick="clickSeat(this)">I2</li>
+                            <li class = "seat" id="H2" onclick="clickSeat(this)">H2</li>
+                            <li class = "seat" id="G2" onclick="clickSeat(this)">G2</li>
+                            <li class = "seat" id="F2" onclick="clickSeat(this)">F2</li>
+                            <li class = "seat" id="E2" onclick="clickSeat(this)">E2</li>
+                            <li class = "seat" id="D2" onclick="clickSeat(this)">D2</li>
+                            <li class = "seat" id="C2" onclick="clickSeat(this)">C2</li>
+                            <li class = "seat" id="B2" onclick="clickSeat(this)">B2</li>
+                            <li class = "seat" id="A2" onclick="clickSeat(this)">A2</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J3" onclick="clickSeat(this)">J3</li>
+                            <li class = "seat" id="I3" onclick="clickSeat(this)">I3</li>
+                            <li class = "seat" id="H3" onclick="clickSeat(this)">H3</li>
+                            <li class = "seat" id="G3" onclick="clickSeat(this)">G3</li>
+                            <li class = "seat" id="F3" onclick="clickSeat(this)">F3</li>
+                            <li class = "seat" id="E3" onclick="clickSeat(this)">E3</li>
+                            <li class = "seat" id="D3" onclick="clickSeat(this)">D3</li>
+                            <li class = "seat" id="C3" onclick="clickSeat(this)">C3</li>
+                            <li class = "seat" id="B3" onclick="clickSeat(this)">B3</li>
+                            <li class = "seat" id="A3" onclick="clickSeat(this)">A3</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J4" onclick="clickSeat(this)">J4</li>
+                            <li class = "seat" id="I4" onclick="clickSeat(this)">I4</li>
+                            <li class = "seat" id="H4" onclick="clickSeat(this)">H4</li>
+                            <li class = "seat" id="G4" onclick="clickSeat(this)">G4</li>
+                            <li class = "seat" id="F4" onclick="clickSeat(this)">F4</li>
+                            <li class = "seat" id="E4" onclick="clickSeat(this)">E4</li>
+                            <li class = "seat" id="D4" onclick="clickSeat(this)">D4</li>
+                            <li class = "seat" id="C4" onclick="clickSeat(this)">C4</li>
+                            <li class = "seat" id="B4" onclick="clickSeat(this)">B4</li>
+                            <li class = "seat" id="A4" onclick="clickSeat(this)">A4</li>
+                        </ul>
+                    </div>
+                    <div class="area2">
+                        <ul>
+                            <li class = "seat" id="J5" onclick="clickSeat(this)">J5</li>
+                            <li class = "seat" id="I5" onclick="clickSeat(this)">I5</li>
+                            <li class = "seat" id="H5" onclick="clickSeat(this)">H5</li>
+                            <li class = "seat" id="G5" onclick="clickSeat(this)">G5</li>
+                            <li class = "seat" id="F5" onclick="clickSeat(this)">F5</li>
+                            <li class = "seat" id="E5" onclick="clickSeat(this)">E5</li>
+                            <li class = "seat" id="D5" onclick="clickSeat(this)">D5</li>
+                            <li class = "seat" id="C5" onclick="clickSeat(this)">C5</li>
+                            <li class = "seat" id="B5" onclick="clickSeat(this)">B5</li>
+                            <li class = "seat wheelchair-area1" id="👩‍🦽1" onclick="clickSeat(this)"></li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J6" onclick="clickSeat(this)">J6</li>
+                            <li class = "seat" id="I6" onclick="clickSeat(this)">I6</li>
+                            <li class = "seat" id="H6" onclick="clickSeat(this)">H6</li>
+                            <li class = "seat" id="G6" onclick="clickSeat(this)">G6</li>
+                            <li class = "seat" id="F6" onclick="clickSeat(this)">F6</li>
+                            <li class = "seat" id="E6" onclick="clickSeat(this)">E6</li>
+                            <li class = "seat" id="D6" onclick="clickSeat(this)">D6</li>
+                            <li class = "seat" id="C6" onclick="clickSeat(this)">C6</li>
+                            <li class = "seat" id="B6" onclick="clickSeat(this)">B6</li>
+                            <li class = "seat wheelchair-area2" id="👩‍🦽2" onclick="clickSeat(this)"></li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J7" onclick="clickSeat(this)">J7</li>
+                            <li class = "seat" id="I7" onclick="clickSeat(this)">I7</li>
+                            <li class = "seat" id="H7" onclick="clickSeat(this)">H7</li>
+                            <li class = "seat" id="G7" onclick="clickSeat(this)">G7</li>
+                            <li class = "seat" id="F7" onclick="clickSeat(this)">F7</li>
+                            <li class = "seat" id="E7" onclick="clickSeat(this)">E7</li>
+                            <li class = "seat" id="D7" onclick="clickSeat(this)">D7</li>
+                            <li class = "seat" id="C7" onclick="clickSeat(this)">C7</li>
+                            <li class = "seat" id="B7" onclick="clickSeat(this)">B7</li>
+                            <li class = "seat wheelchair-area3" id="👩‍🦽3" onclick="clickSeat(this)"></li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J8" onclick="clickSeat(this)">J8</li>
+                            <li class = "seat" id="I8" onclick="clickSeat(this)">I8</li>
+                            <li class = "seat" id="H8" onclick="clickSeat(this)">H8</li>
+                            <li class = "seat" id="G8" onclick="clickSeat(this)">G8</li>
+                            <li class = "seat" id="F8" onclick="clickSeat(this)">F8</li>
+                            <li class = "seat" id="E8" onclick="clickSeat(this)">E8</li>
+                            <li class = "seat" id="D8" onclick="clickSeat(this)">D8</li>
+                            <li class = "seat" id="C8" onclick="clickSeat(this)">C8</li>
+                            <li class = "seat" id="B8" onclick="clickSeat(this)">B8</li>
+                            <li class = "seat wheelchair-area4" id="👩‍🦽4" onclick="clickSeat(this)"></li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J9" onclick="clickSeat(this)">J9</li>
+                            <li class = "seat" id="I9" onclick="clickSeat(this)">I9</li>
+                            <li class = "seat" id="H9" onclick="clickSeat(this)">H9</li>
+                            <li class = "seat" id="G9" onclick="clickSeat(this)">G9</li>
+                            <li class = "seat" id="F9" onclick="clickSeat(this)">F9</li>
+                            <li class = "seat" id="E9" onclick="clickSeat(this)">E9</li>
+                            <li class = "seat" id="D9" onclick="clickSeat(this)">D9</li>
+                            <li class = "seat" id="C9" onclick="clickSeat(this)">C9</li>
+                            <li class = "seat" id="B9" onclick="clickSeat(this)">B9</li>
+                            <li class = "seat" id="A5" onclick="clickSeat(this)">A5</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J10" onclick="clickSeat(this)">J10</li>
+                            <li class = "seat" id="I10" onclick="clickSeat(this)">I10</li>
+                            <li class = "seat" id="H10" onclick="clickSeat(this)">H10</li>
+                            <li class = "seat" id="G10" onclick="clickSeat(this)">G10</li>
+                            <li class = "seat" id="F10" onclick="clickSeat(this)">F10</li>
+                            <li class = "seat" id="E10" onclick="clickSeat(this)">E10</li>
+                            <li class = "seat" id="D10" onclick="clickSeat(this)">D10</li>
+                            <li class = "seat" id="C10" onclick="clickSeat(this)">C10</li>
+                            <li class = "seat" id="B10" onclick="clickSeat(this)">B10</li>
+                            <li class = "seat" id="A6" onclick="clickSeat(this)">A6</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J11" onclick="clickSeat(this)">J11</li>
+                            <li class = "seat" id="I11" onclick="clickSeat(this)">I11</li>
+                            <li class = "seat" id="H11" onclick="clickSeat(this)">H11</li>
+                            <li class = "seat" id="G11" onclick="clickSeat(this)">G11</li>
+                            <li class = "seat" id="F11" onclick="clickSeat(this)">F11</li>
+                            <li class = "seat" id="E11" onclick="clickSeat(this)">E11</li>
+                            <li class = "seat" id="D11" onclick="clickSeat(this)">D11</li>
+                            <li class = "seat" id="C11" onclick="clickSeat(this)">C11</li>
+                            <li class = "seat" id="B11" onclick="clickSeat(this)">B11</li>
+                            <li class = "seat" id="A7" onclick="clickSeat(this)">A7</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J12" onclick="clickSeat(this)">J12</li>
+                            <li class = "seat" id="I12" onclick="clickSeat(this)">I12</li>
+                            <li class = "seat" id="H12" onclick="clickSeat(this)">H12</li>
+                            <li class = "seat" id="G12" onclick="clickSeat(this)">G12</li>
+                            <li class = "seat" id="F12" onclick="clickSeat(this)">F12</li>
+                            <li class = "seat" id="E12" onclick="clickSeat(this)">E12</li>
+                            <li class = "seat" id="D12" onclick="clickSeat(this)">D12</li>
+                            <li class = "seat" id="C12" onclick="clickSeat(this)">C12</li>
+                            <li class = "seat" id="B12" onclick="clickSeat(this)">B12</li>
+                            <li class = "seat" id="A8" onclick="clickSeat(this)">A8</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J13" onclick="clickSeat(this)">J13</li>
+                            <li class = "seat" id="I13" onclick="clickSeat(this)">I13</li>
+                            <li class = "seat" id="H13" onclick="clickSeat(this)">H13</li>
+                            <li class = "seat" id="G13" onclick="clickSeat(this)">G13</li>
+                            <li class = "seat" id="F13" onclick="clickSeat(this)">F13</li>
+                            <li class = "seat" id="E13" onclick="clickSeat(this)">E13</li>
+                            <li class = "seat" id="D13" onclick="clickSeat(this)">D13</li>
+                            <li class = "seat" id="C13" onclick="clickSeat(this)">C13</li>
+                            <li class = "seat" id="B13" onclick="clickSeat(this)">B13</li>
+                            <li class = "seat" id="A9" onclick="clickSeat(this)">A9</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J14" onclick="clickSeat(this)">J14</li>
+                            <li class = "seat" id="I14" onclick="clickSeat(this)">I14</li>
+                            <li class = "seat" id="H14" onclick="clickSeat(this)">H14</li>
+                            <li class = "seat" id="G14" onclick="clickSeat(this)">G14</li>
+                            <li class = "seat" id="F14" onclick="clickSeat(this)">F14</li>
+                            <li class = "seat" id="E14" onclick="clickSeat(this)">E14</li>
+                            <li class = "seat" id="D14" onclick="clickSeat(this)">D14</li>
+                            <li class = "seat" id="C14" onclick="clickSeat(this)">C14</li>
+                            <li class = "seat" id="B14" onclick="clickSeat(this)">B14</li>
+                            <li class = "seat" id="A10" onclick="clickSeat(this)">A10</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J15" onclick="clickSeat(this)">J15</li>
+                            <li class = "seat" id="I15" onclick="clickSeat(this)">I15</li>
+                            <li class = "seat" id="H15" onclick="clickSeat(this)">H15</li>
+                            <li class = "seat" id="G15" onclick="clickSeat(this)">G15</li>
+                            <li class = "seat" id="F15" onclick="clickSeat(this)">F15</li>
+                            <li class = "seat" id="E15" onclick="clickSeat(this)">E15</li>
+                            <li class = "seat" id="D15" onclick="clickSeat(this)">D15</li>
+                            <li class = "seat" id="C15" onclick="clickSeat(this)">C15</li>
+                            <li class = "seat" id="B15" onclick="clickSeat(this)">B15</li>
+                            <li class = "seat" id="A11" onclick="clickSeat(this)">A11</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J16" onclick="clickSeat(this)">J16</li>
+                            <li class = "seat" id="I16" onclick="clickSeat(this)">I16</li>
+                            <li class = "seat" id="H16" onclick="clickSeat(this)">H16</li>
+                            <li class = "seat" id="G16" onclick="clickSeat(this)">G16</li>
+                            <li class = "seat" id="F16" onclick="clickSeat(this)">F16</li>
+                            <li class = "seat" id="E16" onclick="clickSeat(this)">E16</li>
+                            <li class = "seat" id="D16" onclick="clickSeat(this)">D16</li>
+                            <li class = "seat" id="C16" onclick="clickSeat(this)">C16</li>
+                            <li class = "seat" id="B16" onclick="clickSeat(this)">B16</li>
+                            <li class = "seat" id="A12" onclick="clickSeat(this)">A12</li>
+                        </ul>
+                    </div>
+                    <div class="area3">
+                        <ul>
+                            <li class = "seat" id="J17" onclick="clickSeat(this)">J17</li>
+                            <li class = "seat" id="I17" onclick="clickSeat(this)">I17</li>
+                            <li class = "seat" id="H17" onclick="clickSeat(this)">H17</li>
+                            <li class = "seat" id="G17" onclick="clickSeat(this)">G17</li>
+                            <li class = "seat" id="F17" onclick="clickSeat(this)">F17</li>
+                            <li class = "seat" id="E17" onclick="clickSeat(this)">E17</li>
+                            <li class = "seat" id="D17" onclick="clickSeat(this)">D17</li>
+                            <li class = "seat" id="C17" onclick="clickSeat(this)">C17</li>
+                            <li class = "seat" id="B17" onclick="clickSeat(this)">B17</li>
+                            <li class = "seat" id="A13" onclick="clickSeat(this)">A13</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J18" onclick="clickSeat(this)">J18</li>
+                            <li class = "seat" id="I18" onclick="clickSeat(this)">I18</li>
+                            <li class = "seat" id="H18" onclick="clickSeat(this)">H18</li>
+                            <li class = "seat" id="G18" onclick="clickSeat(this)">G18</li>
+                            <li class = "seat" id="F18" onclick="clickSeat(this)">F18</li>
+                            <li class = "seat" id="E18" onclick="clickSeat(this)">E18</li>
+                            <li class = "seat" id="D18" onclick="clickSeat(this)">D18</li>
+                            <li class = "seat" id="C18" onclick="clickSeat(this)">C18</li>
+                            <li class = "seat" id="B18" onclick="clickSeat(this)">B18</li>
+                            <li class = "seat" id="A14" onclick="clickSeat(this)">A14</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J19" onclick="clickSeat(this)">J19</li>
+                            <li class = "seat" id="I19" onclick="clickSeat(this)">I19</li>
+                            <li class = "seat" id="H19" onclick="clickSeat(this)">H19</li>
+                            <li class = "seat" id="G19" onclick="clickSeat(this)">G19</li>
+                            <li class = "seat" id="F19" onclick="clickSeat(this)">F19</li>
+                            <li class = "seat" id="E19" onclick="clickSeat(this)">E19</li>
+                            <li class = "seat" id="D19" onclick="clickSeat(this)">D19</li>
+                            <li class = "seat" id="C19" onclick="clickSeat(this)">C19</li>
+                            <li class = "seat" id="B19" onclick="clickSeat(this)">B19</li>
+                            <li class = "seat" id="A15" onclick="clickSeat(this)">A15</li>
+                        </ul>
+                        <ul>
+                            <li class = "seat" id="J20" onclick="clickSeat(this)">J20</li>
+                            <li class = "seat" id="I20" onclick="clickSeat(this)">I20</li>
+                            <li class = "seat" id="H20" onclick="clickSeat(this)">H20</li>
+                            <li class = "seat" id="G20" onclick="clickSeat(this)">G20</li>
+                            <li class = "seat" id="F20" onclick="clickSeat(this)">F20</li>
+                            <li class = "seat" id="E20" onclick="clickSeat(this)">E20</li>
+                            <li class = "seat" id="D20" onclick="clickSeat(this)">D20</li>
+                            <li class = "seat" id="C20" onclick="clickSeat(this)">C20</li>
+                            <li class = "seat" id="B20" onclick="clickSeat(this)">B20</li>
+                            <li class = "seat" id="A16" onclick="clickSeat(this)">A16</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="screen">
+                    <h4>Tela</h4>
+                </div>
+
+                <div class="purchase">
+                  <div class="info-compra">
+                        <div class="displaySeats">
+                            <p>Assentos selecionados:</p>
+                            <p id="seats"></p>
+                        </div>
+                        <div class="displayPrice">
+                            <p>Valor total:</p>
+                            <p id="total"></p>
+                        </div>
+                    </div>
+
+                    <button onclick="purchase()">Finalizar compra</button>
+                </div>
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
