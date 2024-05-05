@@ -2,21 +2,36 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
-    background-color:black;
     color:white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.header{
-    padding:30px 20px;
-    display:flex;
-    border-bottom: red solid 2px;
-    font-size:20px;
+body{
+    overflow-x: hidden;
+    background-color:black;
 }
 
-.header > .logo{
+.header{
+    padding:0px 20px;
+    display:flex;
+    font-size:20px;
+    border-bottom:5px rgba(255, 0, 0, 0.912) solid;
+}
+ 
+.header > a{
+    text-decoration: none;
+    padding-top:30px;
+    padding-bottom:29px;
     width:18%;
     text-align:center;
+    cursor:pointer;
+}
+
+.header > a > .logo{
+    color:red;
+    font-family:sans-serif;
+    font-size:40px;
+    font-weight:bold;
 }
 
 .header .navbar{
@@ -29,6 +44,14 @@
     float:left;
     text-align:center;
     width:25%;
+    font-weight:bold;
+    font-size: 22px;
+    padding:42px 0;
+    cursor: pointer;
+}
+
+.header .navbar li:hover{
+    background-color: red;
 }
 
 .header .login{
@@ -36,8 +59,82 @@
     text-align:center;
 }
 
+.header .login > p{
+    margin: 26px;
+    padding:15px 12px;
+    border-radius: 10px;
+    font-size:22px;
+    font-weight:bold;
+    background-color: red;
+    font-weight:bold;
+    color:black;
+    cursor:pointer;
+}
+
+/* Página principal */
+
+.slider{
+    margin-top:1px;
+    display:flex;
+    width:500%;
+    height:400px;
+    animation-name: banners;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes banners{
+
+    0%{
+        transform:translateX(0%)
+    }
+
+    5%{
+        transform:translateX(0%)
+    }
+
+    20%{
+        transform:translateX(-20%)
+    }
+
+    30%{
+        transform:translateX(-20%)
+    }
+
+    45%{
+        transform:translateX(-40%)
+    }
+
+    55%{
+        transform:translateX(-40%)
+    }
+
+    70%{
+        transform:translateX(-60%)
+    }
+
+    80%{
+        transform:translateX(-60%)
+    }
+
+    100%{
+        transform:translateX(-80%)
+    }
+
+}
+
+.slider .banner{
+    width:100%;
+    height:100%;
+}
+
+.slider .banner > img{
+    width:100%;
+    height:100%;
+}
+
 .main{
-    margin:0 15%;
+    margin:0 10% -1% 10%;
     padding:3% 0;
     /* border:2px red solid; */
 }
@@ -53,15 +150,18 @@
 }
 
 .movie{
-    width:33.33%;
-    min-width:280px;
-    padding:0 8%;
+    width:25%;
+    min-width:250px;
+    padding:0 5%;
+}
+
+.movie > a{
+    text-decoration: none;
 }
 
 .movie .cover{
     height:240px;
     width:100%;
-    border:2px red solid;
     overflow-y: hidden;
 }
 
@@ -72,5 +172,401 @@
 
 .movie .description{
     /* border:1px solid red; */
-    padding:3%;
+    padding:6% 0;
+}
+
+.movie .description > p{
+    /* border:1px solid red; */
+    padding:3% 0;
+}
+
+.footer{
+    width:100%;
+    padding:25px 0 20px 0;
+    background-color:red;
+    display:flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+}
+
+.footer > h3{
+    padding:8px 0 10px 0;
+    font-size: 22px;
+}
+
+.footer > .images{
+    width:100%;
+    background-color:red;
+    display:flex;
+    place-content: center;
+    align-items: center;
+}
+
+.footer > .images > img{
+    width:180px;
+    height:70px;
+    margin-right: 10px;
+}
+
+.footer > .images > img:nth-child(2){
+    width:170px;
+    height:52px;
+    margin-right:0px;
+    margin-left:2px;
+    margin-top:-3px;
+}
+
+/* Página individual filme */
+
+.section{
+    margin:60px 40px;
+    display:flex;
+    place-content:center;
+}
+
+.section .imagem{
+    width:30%;
+    height:100%;
+    display:grid;
+    place-content: center;
+}
+
+.section .imagem img{
+    width:350px;
+}
+
+.section .description{
+    margin-left:20px;
+    width:65%;
+}
+
+.section .title{
+    display: flex;
+    height:140px;
+    padding: 20px 40px;
+}
+
+.section .title > img{
+    width:100px;
+    height:100px;
+}
+
+.section .title > h3{
+    padding:25px;
+    font-size:50px;
+}
+
+.section .sinopsis{
+    margin: 20px 40px;
+    height:200px;
+}
+
+.section .sinopsis > p{
+    font-size:22px;
+    line-height: 30px;
+}
+
+.section .button{
+    width:100%;
+    height:140px;
+    display:grid;
+    place-content: center;
+}
+
+.section .button button{
+    height:85px;
+    width:300px;
+    background-color:red;
+    font-size:25px;
+    font-weight:bold;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+}
+
+/* Área de compra do ingresso */
+
+.section #overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+    width:100%;
+    height:100%;
+    background-color: black;
+    opacity:0.5;
+    display:none;
+}
+
+.section #date-area{
+    display:flex;
+    flex-direction: column;
+    z-index:2;
+    position: absolute;
+    background-color: rgba(250, 235, 215, 0.93);
+    width:65%;
+    top:53px;
+    left:18%;
+    border-radius: 20px;
+    margin:8px 0px 0px 0px;
+    padding:50px;
+    display:none;
+}
+
+.section #date-area > .dates, .section #date-area > .sessions{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width:100%;
+    text-align:center;
+    height:100px;
+}
+
+.section #date-area > .sessions{
+    margin-top:60px;
+    margin-bottom:60px;
+}
+
+.section #date-area > .dates h3, .section #date-area > .sessions h3{
+    color:black;
+    font-size:20px;
+}
+
+.section #date-area > .dates button, .section #date-area > .sessions button{
+    background-color:red;
+    padding:7px 13.5px;
+    border:none;
+    border-radius:17px;
+    font-size:18.5px;
+    margin-top:18px;
+    cursor:pointer;
+    margin-right:1px;
+    margin-left:1px;
+}
+
+.section #date-area > .sessions button{
+    margin-right:2px;
+    margin-left:2px;
+}
+
+.section #date-area .exit-button > button{
+    margin-bottom:38px;
+    padding:28px;
+}
+
+.section #choice-area{
+    z-index:3;
+    position: absolute;
+    background-color: rgba(250, 235, 215, 0.86);
+    width:65%;
+    top:35px;
+    left:18%;
+    border-radius: 20px;
+    margin:8px 0px 0px 0px;
+    padding:20px;
+    display:none;
+}
+
+.section #choice-area .exit-button, .section #date-area .exit-button{
+    width:98%;
+    text-align:right;
+}
+
+.section #choice-area .exit-button > button, .section #date-area .exit-button > button{
+    background-image: url("images/close-tab.png");
+    background-size: cover;
+    background-position: center;
+    height:45px;
+    width:45px;
+    cursor:pointer;
+    border-radius:10px;
+    border:none;
+    background-color:rgb(204, 10, 10);
+}
+
+.section #choice-area .description{
+    width: 98%;
+    display:flex;
+    place-content: center;
+    align-items: center;
+}
+
+.section #choice-area .description .seat{
+    display:grid;
+    place-content: center;
+    width:20px;
+    height:20px;
+    background-color:rgb(24, 201, 5);
+    padding:2px;
+    border-radius: 50% 50% 3px 3px;
+    font-size:13px;
+    box-shadow:1px 1px black;
+}
+
+.section #choice-area > .description > .seat:nth-of-type(even){
+    background-color:red;
+}
+
+.section #choice-area .description > p{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    color:black;
+    margin-top:0.5%;
+    margin-left:7px;
+}
+
+.section #choice-area .description > p:nth-of-type(odd){
+    margin-right:17px;
+}
+
+.section .price{
+    width:100%;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.section .price > p{
+    color:black;
+    margin-left:18px;
+    font-size:14px;
+}
+
+.section #choice-area .session{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    height:350px;
+    padding:15px 20px;
+    margin:15px 0 5px 0;
+}
+
+.section #choice-area .session .area1, .section #choice-area .session .area2, .section #choice-area .session .area3{
+    display:flex;
+    width:18%;
+    height:100%;
+    justify-content: space-between;
+}
+
+.area1 > ul, .area2 > ul, .area3 > ul{
+    list-style-type:none;
+    width:21%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.area1 > ul > .seat, .area2 > ul > .seat, .area3 > ul > .seat{
+    display:grid;
+    place-content: center;
+    width:100%;
+    height:9%;
+    background-color:rgb(24, 201, 5);
+    padding:2px;
+    border-radius: 50% 50% 3px 3px;
+    font-size:13px;
+    box-shadow: 1px 1px black;
+    text-shadow: 1px 1px black;
+}
+
+.section #choice-area .session .area2{
+    width:54%;
+}
+
+.area2 > ul{
+    width:7%;
+}
+
+.area2 > ul > .wheelchair-area1{
+    background-image: url("images/wheelchair-icon-1.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
+.area2 > ul > .wheelchair-area2{
+    background-image: url("images/wheelchair-icon-2.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
+.area2 > ul > .wheelchair-area3{
+    background-image: url("images/wheelchair-icon-3.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
+.area2 > ul > .wheelchair-area4{
+    background-image: url("images/wheelchair-icon-4.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
+.screen{
+    width:100%;
+    display:grid;
+    place-content:center;
+}
+
+.screen > h4{
+    background-color:red;
+    padding:3px 350px;
+    margin:20px 0 10px 0;
+    text-shadow:1.5px 1.5px black;
+    box-shadow:1px 1px black;
+}
+
+.area1 > ul > .seat:hover, .area2 > ul > .seat:hover, .area3 > ul > .seat:hover{
+    transform:scale(1.06);
+    cursor:pointer;
+}
+
+.area1 > ul > .seat:active, .area2 > ul > .seat:active, .area3 > ul >.seat:active{
+    transform:scale(1.1);
+    cursor:pointer;
+}
+
+.purchase{
+    display:flex;
+    place-content: center;
+    width:82%;
+}
+
+.info-compra{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    padding:10px;
+}
+
+.info-compra > .displaySeats, .info-compra > .displayPrice{
+    display:flex;
+    width:50%;
+    margin-left:37%;
+    text-align:left;
+    margin-top:5px;
+}
+
+.info-compra > .displaySeats > p, .info-compra > .displayPrice > p{
+    color:black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-right:5px;
+}
+
+.purchase > button{
+    margin-top:18px;
+    font-weight:bold;
+    color:white;
+    text-shadow:1px 1px black;
+    background-color: red;
+    width:200px;
+    height:44px;
+    font-size:15px;
+    border:none;
+    border-radius: 25px;
+    padding:5px 15px;
+    cursor:pointer;
 }
