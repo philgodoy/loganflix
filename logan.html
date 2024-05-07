@@ -61,61 +61,59 @@
                         <button onclick="displaySessions('logan16/06')">16/06</button>
                         <button onclick="displaySessions('logan17/06')">17/06</button>
                         <button onclick="displaySessions('logan18/06')">18/06</button>
+                        <button onclick="displaySessions('logan19/06')">19/06</button>
                     </div>
                 </div>
                 <div class="sessions">
                     <div class="date" style="display:none" id="logan13/06">
                         <h3>Selecione uma sessão (13/06):</h3>
                         <div class="options">
-                            <button onclick="displayChoiceArea(logan.session1)">11:00</button>
-                            <button onclick="displayChoiceArea(logan.session2)">14:00</button>
-                            <button onclick="displayChoiceArea(logan.session3)">17:00</button>
-                            <button onclick="displayChoiceArea(logan.session4)">20:00</button>
+                            <button onclick="displayChoiceArea(logan.session1)">15:00</button>
+                            <button onclick="displayChoiceArea(logan.session2)">20:00</button>
                         </div>
                     </div>
                     <div class="date"style="display:none" id="logan14/06">
                         <h3>Selecione uma sessão (14/06):</h3>
                         <div class="options">
-                            <button onclick="displayChoiceArea(this)">12:00</button>
-                            <button onclick="displayChoiceArea(this)">15:00</button>
-                            <button onclick="displayChoiceArea(this)">18:00</button>
-                            <button onclick="displayChoiceArea(this)">21:00</button>
+                            <button onclick="displayChoiceArea(logan.session3)">14:00</button>
+                            <button onclick="displayChoiceArea(logan.session4)">18:00</button>
+                            <button onclick="displayChoiceArea(logan.session5)">21:00</button>
                         </div>
                     </div>
                     <div class="date" style="display:none" id="logan15/06">
                         <h3>Selecione uma sessão (15/06):</h3>
                         <div class="options">
-                            <button onclick="displayChoiceArea(this)">13:00</button>
-                            <button onclick="displayChoiceArea(this)">16:00</button>
-                            <button onclick="displayChoiceArea(this)">19:00</button>
-                            <button onclick="displayChoiceArea(this)">22:00</button>
+                            <button onclick="displayChoiceArea(logan.session6)">11:00</button>
+                            <button onclick="displayChoiceArea(logan.session7)">15:00</button>
+                            <button onclick="displayChoiceArea(logan.session8)">20:00</button>
                         </div>
                     </div>
                     <div class="date" style="display:none" id="logan16/06">
                         <h3>Selecione uma sessão (16/06):</h3>
                         <div class="options">
-                            <button onclick="displayChoiceArea(this)">11:00</button>
-                            <button onclick="displayChoiceArea(this)">14:00</button>
-                            <button onclick="displayChoiceArea(this)">17:00</button>
-                            <button onclick="displayChoiceArea(this)">20:00</button>
+                            <button onclick="displayChoiceArea(logan.session9)">11:00</button>
+                            <button onclick="displayChoiceArea(logan.session10)">15:00</button>
+                            <button onclick="displayChoiceArea(logan.session11)">19:00</button>
                         </div>
                     </div>
                     <div class="date" style="display:none" id="logan17/06">
                         <h3>Selecione uma sessão (17/06):</h3>
                         <div class="options">
-                            <button onclick="displayChoiceArea()">12:00</button>
-                            <button onclick="displayChoiceArea()">15:00</button>
-                            <button onclick="displayChoiceArea()">18:00</button>
-                            <button onclick="displayChoiceArea()">21:00</button>
+                            <button onclick="displayChoiceArea(logan.session12)">15:00</button>
+                            <button onclick="displayChoiceArea(logan.session13)">20:00</button>
                         </div>
                     </div>
                     <div class="date" style="display:none" id="logan18/06">
                         <h3>Selecione uma sessão (18/06):</h3>
                         <div class="options">
-                            <button onclick="displayChoiceArea()">13:00</button>
-                            <button onclick="displayChoiceArea()">16:00</button>
-                            <button onclick="displayChoiceArea()">19:00</button>
-                            <button onclick="displayChoiceArea()">22:00</button>
+                            <button onclick="displayChoiceArea(logan.session14)">20:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan19/06">
+                        <h3>Selecione uma sessão (19/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(logan.session15)">14:00</button>
+                            <button onclick="displayChoiceArea(logan.session16)">20:00</button>
                         </div>
                     </div>
                 </div>
@@ -236,7 +234,7 @@
                             <li class = "seat" id="D8" onclick="clickSeat(this)">D8</li>
                             <li class = "seat" id="C8" onclick="clickSeat(this)">C8</li>
                             <li class = "seat" id="B8" onclick="clickSeat(this)">B8</li>
-                            <li class = "seat wheelchair-area4" id="👩‍🦽4" onclick="clickSeat(this)"></li>
+                            <li class = "seat wheelchair-area4" id="🐂" onclick="clickSeat(this)"></li>
                         </ul>
                         <ul>
                             <li class = "seat" id="J9" onclick="clickSeat(this)">J9</li>
@@ -403,10 +401,59 @@
                         </div>
                     </div>
 
-                    <button onclick="purchase()">Finalizar compra</button>
-                </div>
-                
+                    <button onclick="displayPurchaseArea()">Finalizar compra</button>
 
+                    <div class="overlay2" id="overlay2"></div>
+
+                    <div class="info-area" id="purchase-area" style="display: none;">
+                        <div class="exit-button" onclick="closePurchaseArea()">
+                            <p>x</p>
+                        </div>
+                        <div class="title">
+                            <p>Preencha os campos abaixo:</p>
+                        </div>
+                        <div class="first-name">
+                            <input type="text" required placeholder="Digite o seu nome" id="nome" autocomplete="off">
+                        </div>
+                        <div class="last-name">
+                            <input type="text" required placeholder="Digite o seu sobrenome" id="sobrenome" autocomplete="off">
+                        </div>
+                        <div class="payment">
+
+                            <h4>Escolha um método de pagamento:</h4>
+
+                            <div class="options">
+                                <input name="payment" type="radio" id="debito" onclick="selectPayment('debito')">
+                                <label for="">Débito</label>
+
+                                <input name="payment" type="radio" id="credito" onclick="selectPayment('credito')">
+                                <label for="">Crédito</label>
+
+                                <input name="payment" type="radio" id="pix" onclick="selectPayment('pix')">
+                                <label for="">PIX</label>
+                            </div>
+                            <div class="card" id="card" style="display:none">
+                                <h5>Insira abaixo os dados do seu cartão:</h5>
+                                <input type="text" placeholder="Número do cartão">
+                                <input type="password" placeholder="Senha do cartão">
+                            </div>
+
+                            <div class="qrcode" id="qrcode" style="display:none">
+                                <img src="images/qrcode.png" alt="">
+                            </div>
+                    
+
+                        </div>
+                        <button onclick="purchase()">Finalizar</button>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ticket-area" id="ticket-area" style="display: none;">
+                <div class="exit-button" id="exit-ticket">
+                    <button onclick="closeAll()">x</button>
+                </div>
             </div>
 
         </div>
