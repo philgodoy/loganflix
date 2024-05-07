@@ -7,7 +7,7 @@ let date;
 let time;
 let clientName;
 let ticketSeat;
-let barcodeNumber;
+let selected = false;
 
 const logan = {
     session1: [["A1", "A2", "A3", "A4"]/*purchased seats*/, []/*selected seats*/, []/*ticket seats*/, "13/06", "15:00"],
@@ -50,63 +50,9 @@ function displaySessions(selectedDate){
 }
 
 function displayDateArea(){
-    let remove = document.getElementsByClassName("ticket");
+    let ticketList = document.getElementsByClassName("ticket");
 
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
+    Array.from(ticketList).forEach(i => i.remove())
 
     const dateArea = document.getElementById("date-area");
     const overlay = document.getElementById("overlay");
@@ -199,8 +145,14 @@ function clickSeat(seat){
 }
 
 function displayPurchaseArea(){
-    document.getElementById("overlay2").style.display = "block";
-    document.getElementById("purchase-area").style.display = "block";
+    if(session[1].length > 0){
+        document.getElementById("overlay2").style.display = "block";
+        document.getElementById("purchase-area").style.display = "block";
+    }
+
+    else{
+
+    }
 }
 
 function closePurchaseArea(){
@@ -211,34 +163,61 @@ function closePurchaseArea(){
 
 function purchase(){
 
-    for(let boughtSeat of session[1]){
-        boughtSeat = document.getElementById(boughtSeat);
-        session[0].push(boughtSeat.id);
-        session[2].push(boughtSeat.id);
-        session[1] = session[1].filter((seats) => seats != boughtSeat.id)
+    if(document.getElementById("name").value.trim() != "" && document.getElementById("surname").value.trim() != ""){
+
+        if(selected != false){
+
+            if (selected == "cartao" && document.getElementById("cardNumber").value.trim() == "" || selected == "cartao" && document.getElementById("cardPassword").value.trim() == ""){
+                window.alert("Por favor, preencha os dados do cartão")
+            }
+
+            else if(selected == "cartao" && isNaN(Number(document.getElementById("cardNumber").value)) || selected == "cartao" && isNaN(Number(document.getElementById("cardNumber").value))){
+                window.alert("Os dados do cartão precisam ser números")
+            }
+
+            else{
+                for(let boughtSeat of session[1]){
+                    boughtSeat = document.getElementById(boughtSeat);
+                    session[0].push(boughtSeat.id);
+                    session[2].push(boughtSeat.id);
+                    session[1] = session[1].filter((seats) => seats != boughtSeat.id)
+                }
+            
+                for(let boughtSeat of session[0]){
+                    boughtSeat = document.getElementById(boughtSeat);
+                    boughtSeat.style.backgroundColor = "red";
+                    boughtSeat.classList.add("purchased");
+                }
+            
+                total = 0;
+                totalPrice.textContent = `R$ ${total},00`
+                seats.textContent = session[1].join(" ");
+                displayTickets();
+            }
+        }
+
+        else{
+            window.alert("Por favor, escolha uma forma de pagamento");
+        }
+        
     }
 
-    for(let boughtSeat of session[0]){
-        boughtSeat = document.getElementById(boughtSeat);
-        boughtSeat.style.backgroundColor = "red";
-        boughtSeat.classList.add("purchased");
+    else{
+        window.alert("Por favor, informe seu nome e sobrenome")
     }
-
-    total = 0;
-    totalPrice.textContent = `R$ ${total},00`
-    seats.textContent = session[1].join(" ");
-    displayTickets();
 }
 
 function selectPayment(value){
     if (value == "debito" || value == "credito"){
         document.getElementById("qrcode").style.display = "none"
         document.getElementById("card").style.display = "block";
+        selected = "cartao";
     }
 
     else{
         document.getElementById("card").style.display = "none";
         document.getElementById("qrcode").style.display = "block";
+        selected = "pix";
     }
 }
 
@@ -251,7 +230,7 @@ function displayTickets(){
         let ticket = document.createElement("div");
         ticket.innerHTML = `
                     <span id="moviedate">${date} - ${time}</span>
-                    <p id="client">${document.getElementById("nome").value} ${document.getElementById("sobrenome").value}</p>
+                    <p id="client">${document.getElementById("name").value} ${document.getElementById("surname").value}</p>
                     <h4 id="barcode">${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}</h4>
                     <h2 id="movieseat">${i}</h2>
                 `;
